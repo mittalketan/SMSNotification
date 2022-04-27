@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+        <label>Configuration</label>
+        <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+            <label>SMS Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+        </field>
+    </group>
+
+    <group id="smsgateways" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>SMS Gateway</label>
+        <field id="gateway" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>SMS Gateway</label>
+            <source_model>Nagarro\SmsNotification\Model\SmsNotification\Source\Smsgateways</source_model>
+        </field>
+
+        <field id="TwilioAccountSID" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Twilio Account SID</label>
+            <comment>Your Account SID from Twilio</comment>
+            <depends> <field id="gateway">twilio</field></depends>
+        </field>
+        <field id="TwilioNOTE" translate="label" type="label" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>NOTE</label>
+            <depends> <field id="gateway">twilio</field></depends>
+        </field>
+        <field id="TwilioAuthToken" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Twilio Auth Token</label>
+            <comment>Your Auth Token from Twilio</comment>
+            <depends> <field id="gateway">twilio</field></depends>
+        </field>
+
+        <field id="TwilioMobiloNumber" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Twilio Mobile Number</label>
+            <comment>Phone number you purchased at Twilio</comment>
+            <depends> <field id="gateway">twilio</field></depends>
+        </field>
+
+
+        <field id="TextLocalsenderID" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Textlocal Sender ID</label>
+            <depends> <field id="gateway">textlocal</field></depends>
+        </field>
+        <field id="TextlocalAPIKey" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Textlocal API Key</label>
+            <depends> <field id="gateway">textlocal</field></depends>
+        </field>
+        <field id="TextlocalAPIURL" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>API URL</label>
+            <comment>https://api.textlocal.in/send/</comment>
+            <validate>validate-url</validate>
+            <depends> <field id="gateway">textlocal</field></depends>
+        </field>
+
+        <field id="BulkSmsUsername" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>BulkSms Username</label>
+            <depends> <field id="gateway">bulksms</field></depends>
+        </field>
+        <field id="BulkSmsPassword" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>BulkSms Password</label>
+            <depends> <field id="gateway">bulksms</field></depends>
+        </field>
+        <field id="BulkSmsAPIURL" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>API URL</label>
+            <comment>https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0</comment>
+            <validate>validate-url</validate>
+            <depends> <field id="gateway">bulksms</field></depends>
+        </field>
+        <depends> <field id="SmsNotification/general/enable">1</field></depends>
+    </group>
+    <group id="GeneralConfiguration" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+        <label>General Configuration</label>
+        <field id="OTPType" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+            <label>OTP Type</label>
+            <source_model>Nagarro\SmsNotification\Model\SmsNotification\Source\OTPType</source_model>
+        </field>
+        <field id="OTPLength" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+            <label>OTP Length</label>
+            <source_model>Nagarro\SmsNotification\Model\SmsNotification\Source\OTPLength</source_model>
+        </field>
+        <field id="ButtonStyleClass" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+            <label>Button Style Class</label>
+            <comment>Add Multiple css class with space.</comment>
+        </field>
+            <depends> <field id="SmsNotification/general/enable">1</field></depends>
+    </group>
+</include>

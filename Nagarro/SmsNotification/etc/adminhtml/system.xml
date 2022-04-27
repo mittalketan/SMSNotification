@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="nagarrotab" translate="label" class="magento-admin-nagarro-tab" sortOrder="200">
+            <label>Nagarro</label>
+        </tab>
+        <section id="SmsNotification" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+            <class>separator-top</class>
+            <label>SMS Notification</label>
+            <tab>nagarrotab</tab>
+            <resource>Nagarro_SmsNotification::appointment_config</resource>
+            <include path="Nagarro_SmsNotification::system/SMSNotification.xml"/>
+        </section>
+
+        <section id="UserTemplates" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+            <class>separator-top</class>
+            <label>User Templates</label>
+            <tab>nagarrotab</tab>
+            <resource>Nagarro_SmsNotification::appointment_config</resource>
+            <include path="Nagarro_SmsNotification::system/UserTemplates.xml"/>
+        </section>
+        <section id="AdminTemplates" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
+            <class>separator-top</class>
+            <label>Admin Templates</label>
+            <tab>nagarrotab</tab>
+            <resource>Nagarro_SmsNotification::appointment_config</resource>
+            <include path="Nagarro_SmsNotification::system/AdminTemplates.xml"/>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,19 @@
+{
+    "name": "nagarro/smsnotification",
+    "description": "A module that creates a Appointment in the Magento",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+      "OSL-3.0",
+      "AFL-3.0"
+    ],
+    "require": {
+      "php": "~7.4.0"
+    },
+    "autoload": {
+      "files": [ "registration.php" ],
+      "psr-4": {
+        "Nagarro\\SmsNotification\\": ""
+      }
+    }
+  }

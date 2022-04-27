@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="adminGeneral" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>General</label>
+        <field id="NotificationText" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Admin Mobile Number(s)</label>
+            <comment> <![CDATA[Add Number With Country Code e.g:-(91xxxxxx013)<br />You can Enter Multiple Admin Numbers by Comma Separated (,)]]> </comment>
+        </field>
+    </group>
+    <group id="RegistrationNotification" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Registration Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>SMS Notification will be Sent To Admin After Customer Registration</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var mobilenumber}} <br />Objects : customer]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+    <group id="PlaceOrderNotification" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Place Order Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>SMS Notification will be Sent To Admin After Order Placed</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var mobilenumber}},{{var order_total}}<br />Objects : order,customer]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+    <group id="InvoiceNotification" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Invoice Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>SMS Notification will be Sent To Admin After Invoice Generation</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var mobilenumber}},{{var invoice_total}}<br />Objects : invoice,order,customer ]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+    <group id="ShipmentNotification" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Shipment Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>SMS Notification will be Sent To Admin After Shipment Generation</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var mobilenumber}},{{var shippingcarrier}},{{var trackingnumber}}<br/>Objects : shipment,order,customer]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+    <group id="CreditMemoNotification" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Credit Memo Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>SMS Notification will be Sent To Admin After Credit Memo Generation</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var mobilenumber}}<br/>Objects : creditmemo,order,customer]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+    <group id="ContactNotification" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Contact Notification</label>
+        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>This Notification will be Sent to Admin, Once Customer Fill-up the Contact Form</comment>
+        </field>
+        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Notification Text</label>
+            <comment> <![CDATA[Variables : {{var name}},{{var email}},{{var telephone}},{{var comment}},{{var store_name}}]]> </comment>
+            <depends> <field id="Notification">1</field></depends>
+        </field>
+    </group>
+</include>
