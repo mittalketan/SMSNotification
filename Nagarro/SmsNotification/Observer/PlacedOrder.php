@@ -1,13 +1,13 @@
 <?php
 
-namespace Nagarro\SmsNotification\Appointments\Observer;
+namespace Nagarro\SmsNotification\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Nagarro\SmsNotification\Helper\Data as Helper;
 
-class SendStatustoCustomer implements ObserverInterface
+class PlacedOrder implements ObserverInterface
 {
     protected $_inlineTranslation;
     protected $_transportBuilder;
