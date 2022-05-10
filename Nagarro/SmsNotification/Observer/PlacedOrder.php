@@ -2,10 +2,11 @@
 
 namespace Nagarro\SmsNotification\Observer;
 
-use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Nagarro\SmsNotification\Helper\Data as Helper;
+use Nagarro\SmsNotification\Helper\SendSMS as SendSMSHelper;
+use Nagarro\SmsNotification\Helper\MessageParser as MessageParser;
 
 class PlacedOrder implements ObserverInterface
 {
@@ -15,6 +16,8 @@ class PlacedOrder implements ObserverInterface
     protected $_logLoggerInterface;
     protected $storeManager;
     protected $helper;
+    protected $sendSMSHelper;
+    protected $messageParser;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -22,8 +25,9 @@ class PlacedOrder implements ObserverInterface
         \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Psr\Log\LoggerInterface $loggerInterface,
-        StoreManagerInterface $storeManager,
-        Helper $helper
+        Helper $helper,
+        SendSMSHelper $sendSMSHelper,
+        MessageParser $messageParser
 
     ) {
         $this->_inlineTranslation = $inlineTranslation;
@@ -31,15 +35,38 @@ class PlacedOrder implements ObserverInterface
         $this->_scopeConfig = $scopeConfig;
         $this->_logLoggerInterface = $loggerInterface;
         $this->messageManager = $context->getMessageManager();
-        $this->storeManager = $storeManager;
         $this->helper = $helper;
+        $this->sendSMSHelper = $sendSMSHelper;
+        $this->messageParser = $messageParser;
     }
 
-    public function execute(Observer $observer)
+    public function execute(EventObserver $observer)
     {
+        if (!$this->helper->isExtensionActive())
+            return;
+
+        $adminMessage = $this->helper->getAdminMessage('PlaceOrderNotification');
+        if ($adminMessage['enable']) {
+            $message =  $this->messageParser->parseMessage($adminMessage['message']);
+            $this->sendSMSHelper->sendSmstoAdmin($message);
+        }
+
+        $userMessage = $this->helper->getUserMessage('PlaceOrderNotification');
+        if ($userMessage['enable']) {
+            $message =  $this->messageParser->parseMessage($adminMessage['message']);
+            $this->sendSMSHelper->sendSms('+919654069449', $message);
+        }
 
 
+        //dump($adminMessage);
+        //$invoice = $observer->getEvent()->getInvoice();
+        //$order = $invoice->getOrder();
 
-        return $this;
+       // dump($observer);
+        // dump($smsGateway);
+
+       // dump($order);
+       // dump($invoice);
+       // die;
     }
 }

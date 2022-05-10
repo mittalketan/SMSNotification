@@ -8,7 +8,7 @@ use Nagarro\SmsNotification\Helper\Data as Helper;
 use Nagarro\SmsNotification\Helper\SendSMS as SendSMSHelper;
 use Nagarro\SmsNotification\Helper\MessageParser as MessageParser;
 
-class SalesOrderInvoicePay implements ObserverInterface
+class CreditMemoGenerated implements ObserverInterface
 {
     protected $_inlineTranslation;
     protected $_transportBuilder;
@@ -45,28 +45,28 @@ class SalesOrderInvoicePay implements ObserverInterface
         if (!$this->helper->isExtensionActive())
             return;
 
-        $adminMessage = $this->helper->getAdminMessage('InvoiceNotification');
+        $adminMessage = $this->helper->getAdminMessage('CreditMemoNotification');
         if ($adminMessage['enable']) {
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
             $this->sendSMSHelper->sendSmstoAdmin($message);
         }
 
-        $userMessage = $this->helper->getUserMessage('InvoiceNotification');
+        $userMessage = $this->helper->getUserMessage('CreditMemoNotification');
         if ($userMessage['enable']) {
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSms('+918700028876', $message);
+            $this->sendSMSHelper->sendSms('+919654069449', $message);
         }
 
 
-        dump($adminMessage);
-        $invoice = $observer->getEvent()->getInvoice();
-        $order = $invoice->getOrder();
+        //dump($adminMessage);
+        //$invoice = $observer->getEvent()->getInvoice();
+        //$order = $invoice->getOrder();
 
-        dump($observer);
+       // dump($observer);
         // dump($smsGateway);
 
-        dump($order);
-        dump($invoice);
-        die;
+       // dump($order);
+       // dump($invoice);
+       // die;
     }
 }
