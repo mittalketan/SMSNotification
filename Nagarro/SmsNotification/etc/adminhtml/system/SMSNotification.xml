@@ -12,7 +12,7 @@
         <label>SMS Gateway</label>
         <field id="gateway" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>SMS Gateway</label>
-            <source_model>Nagarro\SmsNotification\Model\SmsNotification\Source\Smsgateways</source_model>
+            <source_model>Nagarro\SmsNotification\Model\SmsNotification\Source\SmsGateways</source_model>
         </field>
 
         <field id="TwilioAccountSID" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -24,7 +24,7 @@
             <label>NOTE</label>
             <depends> <field id="gateway">twilio</field></depends>
         </field>
-        <field id="TwilioAuthToken" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="TwilioAuthToken" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Twilio Auth Token</label>
             <comment>Your Auth Token from Twilio</comment>
             <depends> <field id="gateway">twilio</field></depends>
@@ -41,7 +41,7 @@
             <label>Textlocal Sender ID</label>
             <depends> <field id="gateway">textlocal</field></depends>
         </field>
-        <field id="TextlocalAPIKey" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="TextlocalAPIKey" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Textlocal API Key</label>
             <depends> <field id="gateway">textlocal</field></depends>
         </field>
@@ -56,7 +56,7 @@
             <label>BulkSms Username</label>
             <depends> <field id="gateway">bulksms</field></depends>
         </field>
-        <field id="BulkSmsPassword" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="BulkSmsPassword" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>BulkSms Password</label>
             <depends> <field id="gateway">bulksms</field></depends>
         </field>

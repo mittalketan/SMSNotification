@@ -2,175 +2,175 @@
 <include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
     <group id="OTPatRegistration" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>OTP at Registration</label>
-        <field id="Confirmation" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>OTP will be Required for Customer Registration</comment>
         </field>
-        <field id="ConfirmationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation Text</label>
             <comment> <![CDATA[Variable : {{var otp}}]]> </comment>
-            <depends> <field id="Confirmation">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="RegistrationNotification" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Registration Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Customer Registration</comment>
         </field>
-        <field id="ConfirmationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation Text</label>
             <comment><![CDATA[Variables : {{var mobilenumber}}]]></comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="OTPatMyAccount" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>OTP at My Account</label>
-        <field id="Confirmation" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>OTP to Change The Mobile Number From My Account Section</comment>
         </field>
-        <field id="ConfirmationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation Text</label>
             <comment> <![CDATA[Variable : {{var otp}}]]> </comment>
-            <depends> <field id="Confirmation">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="OTPatCheckout" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>OTP at Checkout</label>
-        <field id="Confirmation" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>Order Verification by OTP Based on Payment Method and Customer Group</comment>
         </field>
-        <field id="ConfirmationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Confirmation Text</label>
             <comment> <![CDATA[Variable : {{var otp}}]]> </comment>
-            <depends> <field id="Confirmation">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="PlaceOrderNotification" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Place Order Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Order Place</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}},{{var order_total}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="InvoiceNotification" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Invoice Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Invoice Generation</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}},{{var invoice_total}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="ShipmentNotification" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Shipment Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Shipment Generation</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}},{{var shippingcarrier}},{{var trackingnumber}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="ManualShipmentTrackingInformation" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Manual Shipment Tracking Information</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>This Notification will be Sent If You Click Send Tracking SMS Button on Shipment View Page in Order.<br/>
                     Sales -> Orders -> Shipments Or Sales - Shipments</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}},{{var trackingnumber}},{{var carriername}}, {{var trackurl}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
         <field id="TrackingURL" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Tracking URL</label>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="CreditMemoNotification" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Credit Memo Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Credit Memo Generation</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}} <br /> Objects : creditmemo,order,customer]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="CancelOrderNotification" translate="label" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Cancel Order Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Order Cancellation.</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}} <br /> Objects : order,customer]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="HoldOrderNotification" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Hold Order Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>SMS Notification will be Sent After Order On Hold.</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var mobilenumber}},{{var status}},{{var order_total}} <br /> Objects : order,customer]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="ContactNotification" translate="label" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Contact Notification</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
             <comment>This Notification will be Sent to Customer, Once He/She Fill-up the Contact Form.</comment>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[Variables : {{var name}},{{var email}},{{var telephone}},{{var comment}},{{var store_name}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
     <group id="ReviewReminder" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Review Reminder</label>
-        <field id="Notification" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>SMS Notification Text</label>
             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
         </field>
-        <field id="NotificationText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <field id="MessageText" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Notification Text</label>
             <comment> <![CDATA[SMS Notification will be Sent To Customer After Number of Days Configured in Above Settings. <br />Objects : order <br />Variables : {{var mobilenumber}},{{var order_total}},{{var prod_name}},{{var prod_url}},{{var order.customerFirstname}},{{var order.customerLastname}}]]> </comment>
-            <depends> <field id="Notification">1</field></depends>
+            <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
 </include>

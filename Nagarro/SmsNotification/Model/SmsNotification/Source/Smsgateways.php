@@ -12,7 +12,7 @@ namespace Nagarro\SmsNotification\Model\SmsNotification\Source;
  * @api
  * @since 100.0.2
  */
-class Smsgateways implements \Magento\Framework\Option\ArrayInterface
+class SmsGateways implements \Magento\Framework\Option\ArrayInterface
 {
     const BULKSMS_VALUE = 'bulksms';
     const TEXTLOCAL_VALUE = 'textlocal';

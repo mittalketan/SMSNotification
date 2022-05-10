@@ -4,25 +4,20 @@ namespace Nagarro\SmsNotification\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
+use Nagarro\SmsNotification\Model\SmsNotification\Source\SmsGateways;
 
 class Data extends AbstractHelper
 {
-    /**
-     * @var Magento\Framework\Stdlib\DateTime\TimezoneInterface
-     */
-    protected $_timezoneInterface;
-    const XML_PATH_HELLOWORLD = 'appointment/';
+    const XML_PATH_EXTENSION_SMSNOIFICATION = 'SmsNotification/';
+    const XML_PATH_EXTENSION_ADMINTEMPLATE = 'AdminTemplates/';
+    const XML_PATH_EXTENSION_USERTEMPLATE = 'UserTemplates/';
 
     /**
      * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezoneInterface
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        //time zone interface
-        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezoneInterface
+        \Magento\Framework\App\Helper\Context $context
     ) {
-        $this->_timezoneInterface = $timezoneInterface;
         parent::__construct($context);
     }
 
@@ -35,28 +30,71 @@ class Data extends AbstractHelper
         );
     }
 
-    public function getGeneralConfig($code, $storeId = null)
+    public function getGeneralConfig($grp = 'general/', $code, $storeId = null)
     {
+        return $this->getConfigValue(self::XML_PATH_EXTENSION_SMSNOIFICATION . $grp . $code, $storeId);
+    }
 
-        return $this->getConfigValue(self::XML_PATH_HELLOWORLD . 'general/' . $code, $storeId);
+    public function getGeneralConfigForSMSNotification($grp = 'general/', $code, $storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_EXTENSION_SMSNOIFICATION . $grp . $code, $storeId);
+    }
+
+    public function getGeneralConfigForAdminTemplate($grp, $code, $storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_EXTENSION_ADMINTEMPLATE . $grp . $code, $storeId);
+    }
+
+    public function getGeneralConfigForUserTemplate($grp, $code, $storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_EXTENSION_USERTEMPLATE . $grp . $code, $storeId);
+    }
+
+    /**
+     * isExtensionActive function
+     *
+     * @return boolean
+     */
+    public function isExtensionActive()
+    {
+        return (bool) $this->getGeneralConfigForSMSNotification('general/', 'enable');
+    }
+
+    /**
+     * getActiveGateway function
+     *
+     * @return array
+     */
+    public function getActiveGateway()
+    {
+        return $this->getGeneralConfigForSMSNotification('smsgateways/', 'gateway');
+    }
+
+    public function getAdminPhoneNumber()
+    {
+        return $this->getGeneralConfigForAdminTemplate('adminGeneral/', 'MobileNumber');
     }
 
 
-
-    /**
-     * @param string $dateTime
-     * @return string $dateTime as time zone
-     */
-    public function getTimeAccordingToTimeZone($dateTime = null)
+    public function getAdminMessage($group)
     {
-        // for get current time according to time zone
-        if (is_null($dateTime))
-            return $this->_timezoneInterface->date();
+        $group = $group . '/';
+        $return = [];
+        $return['enable'] = (bool) $this->getGeneralConfigForAdminTemplate($group, 'Enable');
+        if ($return['enable']) {
+            $return['message'] = $this->getGeneralConfigForAdminTemplate($group, 'MessageText');
+        }
+        return $return;
+    }
 
-        // for convert date time according to magento time zone
-        $dateTimeAsTimeZone = $this->_timezoneInterface
-            ->date(new \DateTime($dateTime));
-        // ->format('m/d/y H:i:s');
-        return $dateTimeAsTimeZone;
+    public function getUserMessage($group)
+    {
+        $group = $group . '/';
+        $return = [];
+        $return['enable'] = (bool) $this->getGeneralConfigForAdminTemplate($group, 'Enable');
+        if ($return['enable']) {
+            $return['message'] = $this->getGeneralConfigForAdminTemplate($group, 'MessageText');
+        }
+        return $return;
     }
 }

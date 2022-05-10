@@ -38,8 +38,7 @@ class PlacedOrder implements ObserverInterface
     public function execute(Observer $observer)
     {
 
-        dump($observer);
-        die;
+
 
         return $this;
     }
