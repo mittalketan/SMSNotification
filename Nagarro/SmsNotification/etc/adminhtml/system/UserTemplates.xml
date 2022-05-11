@@ -161,7 +161,7 @@
             <depends> <field id="Enable">1</field></depends>
         </field>
     </group>
-    <group id="ReviewReminder" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+    <!-- <group id="ReviewReminder" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Review Reminder</label>
         <field id="Enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>SMS Notification Text</label>
@@ -172,5 +172,5 @@
             <comment> <![CDATA[SMS Notification will be Sent To Customer After Number of Days Configured in Above Settings. <br />Objects : order <br />Variables : {{var mobilenumber}},{{var order_total}},{{var prod_name}},{{var prod_url}},{{var order.customerFirstname}},{{var order.customerLastname}}]]> </comment>
             <depends> <field id="Enable">1</field></depends>
         </field>
-    </group>
+    </group> -->
 </include>

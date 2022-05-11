@@ -8,7 +8,7 @@ use Nagarro\SmsNotification\Helper\Data as Helper;
 use Nagarro\SmsNotification\Helper\SendSMS as SendSMSHelper;
 use Nagarro\SmsNotification\Helper\MessageParser as MessageParser;
 
-class InvoiceNotification implements ObserverInterface
+class ContactNotification implements ObserverInterface
 {
     protected $_inlineTranslation;
     protected $_transportBuilder;
@@ -45,13 +45,13 @@ class InvoiceNotification implements ObserverInterface
         if (!$this->helper->isExtensionActive())
             return;
 
-        $adminMessage = $this->helper->getAdminMessage('InvoiceNotification');
+        $adminMessage = $this->helper->getAdminMessage('ContactNotification');
         if ($adminMessage['enable']) {
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
             $this->sendSMSHelper->sendSmstoAdmin($message);
         }
 
-        $userMessage = $this->helper->getUserMessage('InvoiceNotification');
+        $userMessage = $this->helper->getUserMessage('ContactNotification');
         if ($userMessage['enable']) {
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
             $this->sendSMSHelper->sendSms('+918700028876', $message);
