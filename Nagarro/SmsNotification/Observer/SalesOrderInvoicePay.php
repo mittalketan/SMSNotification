@@ -53,20 +53,20 @@ class SalesOrderInvoicePay implements ObserverInterface
 
         $userMessage = $this->helper->getUserMessage('InvoiceNotification');
         if ($userMessage['enable']) {
-            $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSms('+918700028876', $message);
+            $message =  $this->messageParser->parseMessage($userMessage['message']);
+            $this->sendSMSHelper->sendSms('+919654069449', $message);
         }
 
 
-        dump($adminMessage);
-        $invoice = $observer->getEvent()->getInvoice();
-        $order = $invoice->getOrder();
+        // dump($adminMessage);
+        // $invoice = $observer->getEvent()->getInvoice();
+        // $order = $invoice->getOrder();
 
-        dump($observer);
-        // dump($smsGateway);
+        // dump($observer);
+        // // dump($smsGateway);
 
-        dump($order);
-        dump($invoice);
-        die;
+        // dump($order);
+        // dump($invoice);
+        // die;
     }
 }

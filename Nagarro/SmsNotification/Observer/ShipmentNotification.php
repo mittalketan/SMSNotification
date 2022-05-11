@@ -53,8 +53,8 @@ class ShipmentNotification implements ObserverInterface
 
         $userMessage = $this->helper->getUserMessage('ShipmentNotification');
         if ($userMessage['enable']) {
-            $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSms('+918700028876', $message);
+            $message =  $this->messageParser->parseMessage($userMessage['message']);
+            $this->sendSMSHelper->sendSms('+919654069449', $message);
         }
     }
 }
