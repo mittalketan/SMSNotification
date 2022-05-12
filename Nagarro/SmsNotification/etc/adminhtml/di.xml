@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Shipping\Block\Adminhtml\View">
+        <plugin name="nagarro_sms_adminhtml_shipment_view_addsms_button" type="Nagarro\SmsNotification\Plugin\Shipping\Block\Adminhtml\View" sortOrder="10" />
+    </type>
+</config>
