@@ -45,16 +45,16 @@ class CancelOrderNotification implements ObserverInterface
         if (!$this->helper->isExtensionActive())
             return;
 
-        $adminMessage = $this->helper->getAdminMessage('CancelOrderNotification');
-        if ($adminMessage['enable']) {
-            $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSmstoAdmin($message);
-        }
+        // $adminMessage = $this->helper->getAdminMessage('CancelOrderNotification');
+        // if ($adminMessage['enable']) {
+        //     $message =  $this->messageParser->parseMessage($adminMessage['message']);
+        //     $this->sendSMSHelper->sendSmstoAdmin($message);
+        // }
 
         $userMessage = $this->helper->getUserMessage('CancelOrderNotification');
         if ($userMessage['enable']) {
-            $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSms('+918700028876', $message);
+            $message =  $this->messageParser->parseMessage($userMessage['message']);
+            $this->sendSMSHelper->sendSms('+919654069449', $message);
         }
     }
 }

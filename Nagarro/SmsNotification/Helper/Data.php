@@ -91,9 +91,9 @@ class Data extends AbstractHelper
     {
         $group = $group . '/';
         $return = [];
-        $return['enable'] = (bool) $this->getGeneralConfigForAdminTemplate($group, 'Enable');
+        $return['enable'] = (bool) $this->getGeneralConfigForUserTemplate($group, 'Enable');
         if ($return['enable']) {
-            $return['message'] = $this->getGeneralConfigForAdminTemplate($group, 'MessageText');
+            $return['message'] = $this->getGeneralConfigForUserTemplate($group, 'MessageText');
         }
         return $return;
     }
