@@ -6,7 +6,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Nagarro_Mobilelogin::mobileloginconfig" title="Magecomp Mobile Login Free"/>
+                            <resource id="Nagarro_Mobilelogin::mobileloginconfig" title="Nagarro Mobile Login"/>
                         </resource>
                     </resource>
                 </resource>

@@ -1,6 +1,6 @@
 {
-    "name": "magecomp/magento-2-mobile-login-free",
-    "description": "Magecomp Mobile Login Free Extension",
+    "name": "nagarro/magento-2-mobile-login-free",
+    "description": "Nagarro Mobile Login",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0"
     },
@@ -12,9 +12,9 @@
     ],
     "authors": [
         {
-            "name": "Magecomp",
-            "email": "support@magecomp.com",
-            "homepage": "https://magecomp.com"
+            "name": "Nagarro",
+            "email": "support@nagarro.com",
+            "homepage": "https://nagarro.com"
         }
     ],
     "autoload": {
