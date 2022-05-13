@@ -4,6 +4,7 @@ namespace Nagarro\SmsNotification\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Nagarro\SmsNotification\Model\SmsNotification\Source\SmsGateways;
 
 class Data extends AbstractHelper
@@ -11,14 +12,17 @@ class Data extends AbstractHelper
     const XML_PATH_EXTENSION_SMSNOIFICATION = 'SmsNotification/';
     const XML_PATH_EXTENSION_ADMINTEMPLATE = 'AdminTemplates/';
     const XML_PATH_EXTENSION_USERTEMPLATE = 'UserTemplates/';
+    protected $_customerRepository;
 
     /**
      * @param \Magento\Framework\App\Helper\Context $context
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context
+        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository
     ) {
         parent::__construct($context);
+        $this->_customerRepository = $customerRepository;
     }
 
     public function getConfigValue($field, $storeId = null)
@@ -96,5 +100,13 @@ class Data extends AbstractHelper
             $return['message'] = $this->getGeneralConfigForUserTemplate($group, 'MessageText');
         }
         return $return;
+    }
+
+    public function getCustomerMobile($order)
+    {   
+        if($order && $order->getShippingAddress())
+        return $order->getShippingAddress()->getData()['telephone'];
+        else
+        return '+919654069449';
     }
 }

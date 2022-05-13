@@ -51,10 +51,13 @@ class PlaceOrderNotification implements ObserverInterface
             $this->sendSMSHelper->sendSmstoAdmin($message);
         }
 
+        $order = $observer->getEvent()->getOrder();
+        $mobilenumber = $this->helper->getCustomerMobile($order);
+
         $userMessage = $this->helper->getUserMessage('PlaceOrderNotification');
         if ($userMessage['enable']) {
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
-            $this->sendSMSHelper->sendSms('+919654069449', $message);
+            $this->sendSMSHelper->sendSms($mobilenumber, $message);
         }
     }
 }

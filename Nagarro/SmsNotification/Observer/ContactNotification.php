@@ -7,6 +7,7 @@ use Magento\Framework\Event\ObserverInterface;
 use Nagarro\SmsNotification\Helper\Data as Helper;
 use Nagarro\SmsNotification\Helper\SendSMS as SendSMSHelper;
 use Nagarro\SmsNotification\Helper\MessageParser as MessageParser;
+use Magento\Framework\App\Request\Http;
 
 class ContactNotification implements ObserverInterface
 {
@@ -18,6 +19,7 @@ class ContactNotification implements ObserverInterface
     protected $helper;
     protected $sendSMSHelper;
     protected $messageParser;
+    protected $request;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -27,7 +29,8 @@ class ContactNotification implements ObserverInterface
         \Psr\Log\LoggerInterface $loggerInterface,
         Helper $helper,
         SendSMSHelper $sendSMSHelper,
-        MessageParser $messageParser
+        MessageParser $messageParser,
+        Http $request
 
     ) {
         $this->_inlineTranslation = $inlineTranslation;
@@ -38,6 +41,7 @@ class ContactNotification implements ObserverInterface
         $this->helper = $helper;
         $this->sendSMSHelper = $sendSMSHelper;
         $this->messageParser = $messageParser;
+        $this->request = $request;
     }
 
     public function execute(EventObserver $observer)
@@ -50,11 +54,12 @@ class ContactNotification implements ObserverInterface
             $message =  $this->messageParser->parseMessage($adminMessage['message']);
             $this->sendSMSHelper->sendSmstoAdmin($message);
         }
+        $mobilenumber = isset($this->request->getParams()['telephone']) ? $this->request->getParams()['telephone'] : '+919654069449';
 
         $userMessage = $this->helper->getUserMessage('ContactNotification');
         if ($userMessage['enable']) {
             $message =  $this->messageParser->parseMessage($userMessage['message']);
-            $this->sendSMSHelper->sendSms('+919654069449', $message);
+            $this->sendSMSHelper->sendSms($mobilenumber, $message);
         }
     }
 }
