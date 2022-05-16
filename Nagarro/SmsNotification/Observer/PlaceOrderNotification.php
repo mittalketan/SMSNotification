@@ -56,7 +56,7 @@ class PlaceOrderNotification implements ObserverInterface
 
         $userMessage = $this->helper->getUserMessage('PlaceOrderNotification');
         if ($userMessage['enable']) {
-            $message =  $this->messageParser->parseMessage($adminMessage['message']);
+            $message =  $this->messageParser->parseMessage($userMessage['message']);
             $this->sendSMSHelper->sendSms($mobilenumber, $message);
         }
     }
